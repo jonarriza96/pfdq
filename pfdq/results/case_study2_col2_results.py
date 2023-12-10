@@ -1,5 +1,4 @@
-#%%
-%matplotlib tk
+# %%
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
@@ -160,7 +159,7 @@ ph_spline_q = np.squeeze(ph_spline_q)
 ph_spline_p = ph_spline["gamma"]
 ph_spline_erf = ph_spline["erf"]
 
-#%%
+# %%
 # --------------------------------- visualize -------------------------------- #
 
 
@@ -234,9 +233,9 @@ ax = visualize_path_frames_spatial(
 plt.axis("off")
 plt.tight_layout()
 fig.set_size_inches(9, 6)
-fig.savefig(save_path + 'isometric_col2.pdf',dpi=1800)
+# fig.savefig(save_path + "isometric_col2.pdf", dpi=1800)
 
-#%%
+# %%
 ######################### top #########################
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -286,9 +285,7 @@ ax = visualize_path_frames_spatial_top(
     secondary=True,
     interval=20,
 )
-ax.plot(
-    pfs4_P[0, :], pfs4_P[1, :], "--", color="darkturquoise", alpha=0.75
-)
+ax.plot(pfs4_P[0, :], pfs4_P[1, :], "--", color="darkturquoise", alpha=0.75)
 ax.plot(pff4_P[0, :], pff4_P[1, :], color="darkturquoise", alpha=1)
 
 ax.plot(ph_spline_p[0, :], ph_spline_p[1, :], color="black", alpha=1.0, linewidth=4.0)
@@ -297,12 +294,12 @@ ax = visualize_path_frames_spatial_top(
 )
 
 plt.axis("off")
-plt.axis('equal')
+plt.axis("equal")
 plt.tight_layout()
 # fig.set_size_inches(9, 3)
-fig.savefig(save_path + 'top_col2.pdf',dpi=1800)
+# fig.savefig(save_path + "top_col2.pdf", dpi=1800)
 
-#%%
+# %%
 ######################### front #########################
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -352,9 +349,7 @@ ax = visualize_path_frames_spatial_front(
     secondary=True,
     interval=20,
 )
-ax.plot(
-    pfs4_P[0, :], pfs4_P[2, :], "--", color="darkturquoise", alpha=0.75
-)
+ax.plot(pfs4_P[0, :], pfs4_P[2, :], "--", color="darkturquoise", alpha=0.75)
 ax.plot(pff4_P[0, :], pff4_P[2, :], color="darkturquoise", alpha=1)
 
 ax.plot(ph_spline_p[0, :], ph_spline_p[2, :], color="black", alpha=1.0, linewidth=4.0)
@@ -363,12 +358,12 @@ ax = visualize_path_frames_spatial_front(
 )
 
 plt.axis("off")
-plt.axis('equal')
+plt.axis("equal")
 plt.tight_layout()
 # fig.set_size_inches(9, 3)
-fig.savefig(save_path + 'front_col2.pdf',dpi=1800)
+# fig.savefig(save_path + "front_col2.pdf", dpi=1800)
 
-#%%
+# %%
 ######################### side #########################
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -418,9 +413,7 @@ ax = visualize_path_frames_spatial_side(
     secondary=True,
     interval=20,
 )
-ax.plot(
-    pfs4_P[1, :], pfs4_P[2, :], "--", color="darkturquoise", alpha=0.75
-)
+ax.plot(pfs4_P[1, :], pfs4_P[2, :], "--", color="darkturquoise", alpha=0.75)
 ax.plot(pff4_P[1, :], pff4_P[2, :], color="darkturquoise", alpha=1)
 
 ax.plot(ph_spline_p[1, :], ph_spline_p[2, :], color="black", alpha=1.0, linewidth=4.0)
@@ -429,6 +422,8 @@ ax = visualize_path_frames_spatial_side(
 )
 
 plt.axis("off")
-plt.axis('equal')
+plt.axis("equal")
 plt.tight_layout()
-fig.savefig(save_path + 'side_col2.pdf',dpi=1800)
+# fig.savefig(save_path + "side_col2.pdf", dpi=1800)
+
+plt.show()

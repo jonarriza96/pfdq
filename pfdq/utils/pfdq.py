@@ -50,7 +50,6 @@ def dq_from_error(dqe, dte, dqd, dtd, theta_dot, pf):
 
 
 def f_kinematic_dq(d_time, dq, dt, a, r):
-
     # get desired state derivatives
     p, v, q, w = dq_to_euclidean(dq, dt)
 
@@ -75,7 +74,6 @@ def f_kinematic_dq(d_time, dq, dt, a, r):
 
 
 def f_kinematic_theta(d_time, theta_states, ktheta, g, g_d, delta, delta_dot):
-
     # get states and inputs
     theta = theta_states[0]
     theta_dot = theta_states[1]
@@ -97,7 +95,6 @@ def f_kinematic_theta(d_time, theta_states, ktheta, g, g_d, delta, delta_dot):
 
 # ------------------------------ euclidean ODEs ------------------------------ #
 def f_kinematic(d_time, x, u):
-
     # get states and inputs
     p = x[:3]
     v = x[3:6]
@@ -184,7 +181,6 @@ def spatial_to_euclidean(x, ph_interp):
 
 
 def euclidean_to_spatial(xi, x, ph_interp):
-
     p = x[:3]
     v = x[3:6]
 
@@ -232,7 +228,6 @@ def euclidean_to_spatial(xi, x, ph_interp):
 
 
 def f_kinematic_spatial(d_time, x, u, ph_interp):
-
     # get states and inputs
     xi = x[0]
     w1 = x[1]
@@ -382,7 +377,6 @@ def get_F(dqe, dte, dqd, dtd, J, theta_dot):
 
 
 def PD_control(dqe, dte, dqd, dtd, dtd_dot, J, kp, kv):  # TODO-->Done
-
     lambda_switch = 1
     if dqe.r_w < 0:
         print("Switching equilibrium")
@@ -424,7 +418,6 @@ def PD_control_pf(
     delta,
     delta_dot,
 ):
-
     # get states and inputs related to virtual to timing law
     theta = theta_states[0]
     theta_dot = theta_states[1]
@@ -441,7 +434,7 @@ def PD_control_pf(
     # get the logarithm of dqe
     lambda_switch = 1
     if dqe.r_w < 0:
-        print("Switching equilibrium")
+        # print("Switching equilibrium")
         lambda_switch *= -1
     ln_dqe = ln_dq(lambda_switch * dqe)
     if np.isnan(ln_dqe.dq).any():
@@ -486,7 +479,6 @@ def theta_dotdot_feedback_law(
     delta,
     delta_dot,
 ):
-
     # theta_dotdot = -ktheta * (theta_dot - theta_vd) + theta_dot * theta_vd_D
     g_delta = np.squeeze(g(delta))
     gD_delta = np.squeeze(g_d(delta))
@@ -496,7 +488,6 @@ def theta_dotdot_feedback_law(
 
 
 def f_error(d_time, dqe, dte, dqd, dtd, dtd_dot, U, J):  # TODO --> Done
-
     # Calculate state derivatives
     F = get_F(dqe, dte, dqd, dtd, J)
 
@@ -691,7 +682,7 @@ def get_spatial_path(visualize=False):
     return xi, r
 
 
-#%%
+# %%
 
 # import numpy as np
 # import casadi as cs
