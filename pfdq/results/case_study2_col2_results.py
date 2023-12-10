@@ -10,11 +10,12 @@ from pfdq.results.utils import (
     visualize_path_frames_spatial_front,
     visualize_path_frames_spatial_side,
 )
-from pfdq.utils.pfdq import get_desired_velocity_profile
+from pfdq.results.utils import get_pfdq_path
+
 
 # -------------------------------- import data ------------------------------- #
-data_path = "/home/jonarriza96/pfdq/pfdq/results/data/case_study2/"  # 27night/"
-save_path = "/home/jonarriza96/pfdq/pfdq/results/figures/case_study2/"
+data_path = get_pfdq_path() + "/pfdq/results/data/case_study2/"
+save_path = get_pfdq_path() + "/pfdq/results/figures/case_study2"
 
 # load pf "0,1,2,3"
 file_name = "pf_f_0"

@@ -5,10 +5,11 @@ import pickle
 from pfdq.utils.quaternion_ph import rotation_to_quaternion
 from pfdq.results.utils import visualize_path_frames
 from pfdq.utils.pfdq import get_desired_velocity_profile
+from pfdq.results.utils import get_pfdq_path
 
 # -------------------------------- import data ------------------------------- #
-data_path = "/home/jonarriza96/pfdq/pfdq/results/data/case_study1/"
-save_path = "/home/jonarriza96/pfdq/pfdq/results/figures/case_study1"
+data_path = get_pfdq_path() + "/pfdq/results/data/case_study1/"
+save_path = get_pfdq_path() + "/pfdq/results/figures/case_study1"
 
 # load pf "conservative, medium, progressive"
 file_name = "pf_c"

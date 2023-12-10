@@ -1,6 +1,7 @@
 import numpy as np
 import casadi as cs
 import matplotlib.pyplot as plt
+import argparse
 
 from scipy.spatial.transform import Rotation
 
@@ -16,20 +17,45 @@ from pfdq.utils.path_generation import (
     visualize_path_with_frames,
 )
 from pfdq.utils.quaternion_ph import quaternion_to_rotation, rotation_to_quaternion
-from pfdq.results.utils import save_pickle
+from pfdq.results.utils import save_pickle, get_pfdq_path
 
 # -------------------------------- user input -------------------------------- #
 # overall settings
-case_study = 2
-save = False
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "--case_study",
+    type=int,
+    default=2,
+    help="Case study 1 or 2.",
+)
+parser.add_argument(
+    "--velocity_profile",
+    type=str,
+    default="f",
+    help="Options: p (progressive), m (medium), c (conservative) [for case study 1] or f (fast), s (slow), v (varying) [for case study 2]",
+)
+parser.add_argument(
+    "--starting_point",
+    type=int,
+    default=2,
+    help="Options: 0,1,2,3,4,5 [for case_study 2].",
+)
+parser.add_argument(
+    "--pt",
+    action="store_true",
+    help="Enables path-tracking (instead of following) [for case study 2]",
+)
+parser.add_argument("--save", action="store_true", help="Save results")
 
-# pf settings
-pf = True
+args = parser.parse_args()
+case_study = args.case_study
+save = args.save
+pf = not args.pt
+pf_profile = args.velocity_profile
 
+# ----------------------------- define parameters ---------------------------- #
 # case study settings
 if case_study == 1:
-    pf_profile = "p"  # Options: p (progressive), m (medium), c (conservative)
-
     start_deviated = False
     disturbe = True
 
@@ -37,8 +63,8 @@ if case_study == 1:
     dist_end = 0.43
 
 elif case_study == 2:
-    pf_profile = "f"  # Options: f (fast), s (slow), v (varying)
-    starting_pt = 5
+    pf_profile = args.velocity_profile
+    starting_pt = args.starting_point
     start_deviated = False
     disturbe = False
 
@@ -525,6 +551,6 @@ if pf:
 else:
     file_name = "pt"
 
-path = "/home/jonarriza96/pfdq/pfdq/results/data/case_study" + str(case_study)
+path = get_pfdq_path() + "/pfdq/results/data/case_study" + str(case_study)
 if save:
     save_pickle(path=path, file_name=file_name, data=data)

@@ -1,7 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
-from pfdq.utils.path_generation import axis_equal
+import subprocess
+
+
+def get_pfdq_path():
+    pacor_path = subprocess.run(
+        "echo $PFDQ_PATH", shell=True, capture_output=True, text=True
+    ).stdout.strip("\n")
+    return pacor_path
 
 
 def save_pickle(path, file_name, data):
