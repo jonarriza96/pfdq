@@ -2,9 +2,7 @@
 
 A pose-following framework based on unit dual quaternions for simultaneously controlling the translation and rotation of a rigid body.
 ![Cover photo](pfdq/results/figures/case_study1/disturbance_git.png)
-For the implementation details, please check the [paper](https://arxiv.org/pdf/2308.09507.pdf) and/or watch the video [video](https://youtu.be/TQig2j90Ijc?si=7fzd7vuAhxWUonxs).
-
-If you use this framework please cite our work:
+For the implementation details, please check the [paper](https://arxiv.org/pdf/2308.09507.pdf) and/or watch the [video](https://youtu.be/TQig2j90Ijc?si=7fzd7vuAhxWUonxs). If you use this framework please cite our work:
 
 ```
 @article{arrizabalaga2023pose,
