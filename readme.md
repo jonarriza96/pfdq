@@ -5,11 +5,13 @@ A pose-following framework based on unit dual quaternions for simultaneously con
 For the implementation details, please check the [paper](https://arxiv.org/pdf/2308.09507.pdf) and/or watch the [video](https://youtu.be/TQig2j90Ijc?si=7fzd7vuAhxWUonxs). If you use this framework please cite our work:
 
 ```
-@article{arrizabalaga2023pose,
+@inproceedings{arrizabalaga2023pose,
   title={Pose-Following with Dual Quaternions},
   author={Arrizabalaga, Jon and Ryll, Markus},
-  journal={arXiv preprint arXiv:2308.09507},
-  year={2023}
+  booktitle={2023 62nd IEEE Conference on Decision and Control (CDC)},
+  pages={5959--5966},
+  year={2023},
+  organization={IEEE}
 }
 ```
 
